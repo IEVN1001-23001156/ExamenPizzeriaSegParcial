@@ -1,0 +1,53 @@
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-lg border border-slate-100 mt-6 space-y-8">
+  
+  <!-- Dia -->
+  <div>
+    <h2 class="text-2xl font-extrabold text-[#D63E12] tracking-tight mb-4">Consulta de Ventas por Día</h2>
+    <div class="flex gap-4 mb-6">
+      <input type="text" [(ngModel)]="diaBusqueda" class="p-2 border rounded-xl w-64 text-sm">
+      <button type="button" (click)="consultarVentasPorDia()" class="px-6 py-2 bg-[#D63E12] text-white font-semibold rounded-xl text-sm shadow-md cursor-pointer">
+        Ventas totales por día
+      </button>
+    </div>
+
+    <div class="bg-slate-100 p-6 rounded-2xl border border-slate-300 space-y-4">
+      <h3 class="font-bold text-slate-700 text-sm uppercase">Ventas del día:</h3>
+      <div *ngFor="let v of ventasDia" class="flex justify-between text-slate-800 font-medium border-b pb-2">
+        <span>{{ v.NombreCliente }}</span>
+        <span class="text-[#D63E12] font-bold">total ${{ v.TotalPedido }}</span>
+      </div>
+      <div *ngIf="ventasDia.length === 0" class="text-slate-500 text-sm">
+        No hay ventas registradas.
+      </div>
+      <div class="pt-4 border-t border-slate-300 text-lg font-bold text-slate-900">
+        Ventas totales del día: <span class="text-2xl text-[#D63E12]">${{ totalDia }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mes -->
+  <div class="pt-6 border-t border-slate-200">
+    <h2 class="text-2xl font-extrabold text-[#D63E12] tracking-tight mb-4">Consulta de Ventas por Mes</h2>
+    <div class="flex gap-4 mb-6">
+      <input type="text" [(ngModel)]="mesBusqueda" class="p-2 border rounded-xl w-64 text-sm">
+      <button type="button" (click)="consultarVentasPorMes()" class="px-6 py-2 bg-slate-800 text-white font-semibold rounded-xl text-sm shadow-md cursor-pointer">
+        Ventas totales por mes
+      </button>
+    </div>
+
+    <div class="bg-slate-100 p-6 rounded-2xl border border-slate-300 space-y-4">
+      <h3 class="font-bold text-slate-700 text-sm uppercase">Ventas del mes:</h3>
+      <div *ngFor="let m of ventasMes" class="flex justify-between text-slate-800 font-medium border-b pb-2">
+        <span>{{ m.NombreCliente }} ({{ m.FechaPedido }})</span>
+        <span class="text-[#D63E12] font-bold">total ${{ m.TotalPedido }}</span>
+      </div>
+      <div *ngIf="ventasMes.length === 0" class="text-slate-500 text-sm">
+        No hay ventas registradas.
+      </div>
+      <div class="pt-4 border-t border-slate-300 text-lg font-bold text-slate-900">
+        Ventas totales del mes: <span class="text-2xl text-[#D63E12]">${{ totalMes }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>
